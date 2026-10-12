@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFDBDB">
+  <meta name="description" content="Portofolio Safira Lintang Zhahrani — IT Support & Web Service Engineer di Sidoarjo.">
+  <title>Safira Lintang Zhahrani — IT Support & Web Service Engineer</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+
+    :root {
+      --ink: #594100;
+      --muted: #644A07;
+      --paper: #FFDBDB;
+      --white: #FFC6C6;
+      --accent: #FFC6C6;
+      --line: rgb(100 74 7 / 18%);
+      --mono: 'DM Mono', monospace;
+      --sans: 'DM Sans', sans-serif;
+      --display: 'Manrope', sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 88px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .wrap { width: min(1160px, calc(100% - 64px)); margin-inline: auto; }
+    .mono { font-family: var(--mono); text-transform: uppercase; letter-spacing: .11em; }
+
+    .topbar { position: sticky; z-index: 10; top: 0; background: rgb(255 219 219 / 91%); backdrop-filter: blur(14px); border-bottom: 1px solid rgb(89 65 0 / 8%); }
+    .nav { min-height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font: 800 14px var(--display); letter-spacing: -.04em; }
+    .brand-mark { display: grid; width: 34px; height: 34px; place-items: center; border-radius: 50%; background: var(--accent); font: 500 12px var(--mono); }
+    .nav-links { display: flex; align-items: center; gap: 30px; color: #644A07; font-size: 13px; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-contact { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border: 1px solid var(--ink); border-radius: 999px; font-size: 12px; font-weight: 700; transition: .2s; }
+    .nav-contact:hover { background: var(--ink); color: #FFDBDB; }
+    .menu-toggle { display: none; border: 0; background: transparent; color: var(--ink); font-size: 22px; cursor: pointer; }
+
+    .hero { padding: 68px 0 86px; }
+    .hero-shell { position: relative; min-height: 560px; display: grid; grid-template-columns: 1.12fr .88fr; overflow: hidden; align-items: center; gap: 36px; padding: 64px 7%; border-radius: 24px; background: #594100; color: #FFDBDB; }
+    .hero-shell::before { position: absolute; content: ''; width: 520px; height: 520px; top: -280px; right: 5%; border: 1px solid rgb(255 198 198 / 13%); border-radius: 50%; box-shadow: 0 0 0 48px rgb(255 198 198 / 3%), 0 0 0 96px rgb(255 198 198 / 3%); }
+    .hero-copy, .system-card { position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); font: 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    .eyebrow::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 14px var(--accent); }
+    h1 { max-width: 670px; margin: 25px 0 18px; font: 600 clamp(46px, 6.5vw, 78px)/1.04 var(--display); letter-spacing: -.075em; }
+    h1 span { color: var(--accent); }
+    .hero-copy > p { max-width: 490px; margin: 0; color: #FFDBDB; font-size: 16px; line-height: 1.8; }
+    .hero-actions { display: flex; align-items: center; gap: 22px; margin-top: 34px; }
+    .button-primary { display: inline-flex; min-height: 48px; align-items: center; justify-content: center; gap: 12px; padding: 0 19px; border-radius: 99px; background: var(--accent); color: var(--ink); font-size: 13px; font-weight: 700; transition: transform .2s, background .2s; }
+    .button-primary:hover { transform: translateY(-2px); background: #FFDBDB; }
+    .text-link { color: #FFDBDB; font-size: 13px; }
+    .text-link span { display: inline-block; margin-left: 5px; transition: transform .2s; }
+    .text-link:hover span { transform: translate(3px, -3px); }
+    .hero-location { margin-top: 49px; color: #FFC6C6; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+
+    .system-card { width: 100%; max-width: 380px; justify-self: end; padding: 23px; border: 1px solid rgb(255 219 219 / 17%); border-radius: 15px; background: rgb(255 219 219 / 5%); box-shadow: 0 30px 90px rgb(89 65 0 / 18%); backdrop-filter: blur(12px); transform: rotate(2deg); }
+    .card-top { display: flex; align-items: center; justify-content: space-between; padding-bottom: 17px; border-bottom: 1px solid rgb(255 219 219 / 12%); color: #FFC6C6; font: 10px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .live { display: inline-flex; align-items: center; gap: 7px; color: var(--accent); }
+    .live::before { content: ''; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+    .terminal { margin: 20px 0 22px; font: 12px/2 var(--mono); }
+    .terminal .dim { color: #FFC6C6; }
+    .terminal .key { color: var(--accent); }
+    .terminal .value { color: #FFDBDB; }
+    .signal { display: flex; align-items: end; gap: 5px; height: 62px; margin: 15px 0 21px; }
+    .signal i { flex: 1; border-radius: 3px 3px 0 0; background: linear-gradient(0deg, rgb(255 198 198 / 22%), var(--accent)); opacity: .8; }
+    .signal i:nth-child(3n) { opacity: .38; }
+    .signal i:nth-child(1) { height: 28%; }.signal i:nth-child(2) { height: 48%; }.signal i:nth-child(3) { height: 39%; }.signal i:nth-child(4) { height: 62%; }.signal i:nth-child(5) { height: 53%; }.signal i:nth-child(6) { height: 77%; }.signal i:nth-child(7) { height: 60%; }.signal i:nth-child(8) { height: 88%; }.signal i:nth-child(9) { height: 68%; }.signal i:nth-child(10) { height: 94%; }.signal i:nth-child(11) { height: 73%; }.signal i:nth-child(12) { height: 100%; }.signal i:nth-child(13) { height: 82%; }.signal i:nth-child(14) { height: 93%; }.signal i:nth-child(15) { height: 71%; }.signal i:nth-child(16) { height: 87%; }.signal i:nth-child(17) { height: 65%; }.signal i:nth-child(18) { height: 79%; }
+    .card-foot { display: flex; justify-content: space-between; color: #FFC6C6; font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+    .section { padding: 88px 0; }
+    .section-head { display: flex; align-items: end; justify-content: space-between; gap: 30px; margin-bottom: 37px; }
+    .section-label { margin: 0 0 13px; color: #644A07; font: 10px var(--mono); letter-spacing: .12em; text-transform: uppercase; }
+    h2 { margin: 0; font: 600 clamp(33px, 4vw, 48px)/1.12 var(--display); letter-spacing: -.06em; }
+    .section-intro { max-width: 360px; margin: 0 0 4px; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    .about-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 75px; align-items: start; }
+    .about-stamp { display: flex; min-height: 245px; flex-direction: column; justify-content: space-between; padding: 26px; border-radius: 14px; background: var(--accent); }
+    .about-stamp .stamp-mark { font: 500 44px/.9 var(--display); letter-spacing: -.08em; }
+    .about-stamp p { max-width: 210px; margin: 0; font: 12px/1.7 var(--mono); text-transform: uppercase; }
+    .about-copy { padding-top: 4px; }
+    .about-copy p { margin: 0 0 18px; color: #644A07; font-size: 16px; line-height: 1.9; }
+    .about-copy strong { color: var(--ink); font-weight: 600; }
+    .skill-chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 25px; }
+    .chip { padding: 9px 12px; border: 1px solid var(--line); border-radius: 99px; color: #644A07; font: 10px var(--mono); }
+
+    .work-section { background: #FFC6C6; }
+    .experience-list { border-top: 1px solid rgb(100 74 7 / 24%); }
+    .experience { display: grid; grid-template-columns: 170px 1fr 30px; gap: 30px; padding: 30px 0; border-bottom: 1px solid rgb(100 74 7 / 24%); }
+    .experience-date { padding-top: 6px; color: #644A07; font: 10px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+    .experience-title { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 14px; }
+    .experience-title h3 { margin: 0; font: 600 20px var(--display); letter-spacing: -.04em; }
+    .experience-title span { color: #644A07; font-size: 13px; }
+    .experience p { max-width: 720px; margin: 11px 0 0; color: #644A07; font-size: 13px; line-height: 1.8; }
+    .experience-index { color: #644A07; font: 10px var(--mono); }
+
+    .projects-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .project { min-height: 280px; display: flex; flex-direction: column; justify-content: space-between; padding: 22px; border: 1px solid var(--line); border-radius: 14px; background: var(--white); transition: transform .2s, box-shadow .2s; }
+    .project:hover { transform: translateY(-4px); box-shadow: 0 18px 45px rgb(89 65 0 / 8%); }
+    .project-top { display: flex; align-items: center; justify-content: space-between; color: #644A07; font: 9px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    .project-icon { display: grid; width: 42px; height: 42px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: var(--ink); font-size: 18px; }
+    .project h3 { margin: 0 0 10px; font: 600 22px/1.25 var(--display); letter-spacing: -.045em; }
+    .project p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.8; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+    .project-tags span { color: #644A07; font: 9px var(--mono); }
+
+    .bottom-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; }
+    .education-card { display: flex; gap: 17px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+    .education-year { min-width: 74px; padding-top: 3px; color: #644A07; font: 10px var(--mono); }
+    .education-card h3 { margin: 0 0 5px; font: 600 15px var(--display); }
+    .education-card p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.7; }
+    .award-list { display: grid; gap: 0; }
+    .award { display: flex; align-items: center; justify-content: space-between; gap: 15px; padding: 17px 0; border-bottom: 1px solid var(--line); color: #594100; font-size: 13px; }
+    .award span:last-child { color: #644A07; font: 9px var(--mono); white-space: nowrap; }
+
+    .contact { padding: 0 0 70px; }
+    .contact-shell { display: flex; align-items: end; justify-content: space-between; gap: 30px; padding: 48px; border-radius: 18px; background: var(--accent); }
+    .contact-shell h2 { max-width: 540px; margin-bottom: 12px; }
+    .contact-shell p { margin: 0; color: #594100; font-size: 13px; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; }
+    .contact-button { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 45px; padding: 0 16px; border: 1px solid rgb(89 65 0 / 30%); border-radius: 99px; font-size: 12px; font-weight: 700; transition: .2s; }
+    .contact-button:hover { background: var(--ink); color: #FFDBDB; }
+    footer { padding: 0 0 25px; }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; color: #644A07; font: 9px var(--mono); letter-spacing: .08em; text-transform: uppercase; }
+
+    @media (max-width: 800px) {
+      .wrap { width: min(100% - 40px, 620px); }
+      .nav { min-height: 68px; }
+      .menu-toggle { display: block; }
+      .nav-links { position: absolute; top: 68px; right: 20px; left: 20px; display: none; align-items: stretch; flex-direction: column; gap: 0; padding: 10px 18px; border: 1px solid var(--line); border-radius: 13px; background: var(--white); box-shadow: 0 15px 30px rgb(89 65 0 / 8%); }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 13px 0; border-bottom: 1px solid var(--line); }
+      .nav-links a:last-child { border-bottom: 0; }
+      .nav-contact { display: none; }
+      .hero { padding: 34px 0 60px; }
+      .hero-shell { grid-template-columns: 1fr; gap: 42px; padding: 48px 8%; }
+      .system-card { justify-self: start; max-width: 430px; transform: none; }
+      .hero-location { margin-top: 32px; }
+      .section { padding: 66px 0; }
+      .section-head { align-items: start; flex-direction: column; gap: 14px; }
+      .about-grid { grid-template-columns: 1fr; gap: 30px; }
+      .about-stamp { min-height: 175px; }
+      .experience { grid-template-columns: 100px 1fr 20px; gap: 16px; }
+      .projects-grid { grid-template-columns: 1fr 1fr; }
+      .bottom-grid { grid-template-columns: 1fr; gap: 55px; }
+      .contact-shell { align-items: start; flex-direction: column; padding: 35px; }
+    }
+    @media (max-width: 520px) {
+      .wrap { width: calc(100% - 32px); }
+      .hero-shell { min-height: auto; padding: 39px 24px; border-radius: 17px; }
+      h1 { font-size: clamp(45px, 13vw, 62px); }
+      .hero-copy > p { font-size: 14px; }
+      .hero-actions { align-items: start; flex-direction: column; gap: 17px; }
+      .system-card { padding: 18px; }
+      .experience { grid-template-columns: 1fr 24px; gap: 10px; }
+      .experience-date { grid-column: 1; grid-row: 1; }
+      .experience-body { grid-column: 1; grid-row: 2; }
+      .experience-index { grid-column: 2; grid-row: 1; }
+      .experience-title h3 { font-size: 18px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project { min-height: 240px; }
+      .contact-shell { padding: 29px 22px; }
+      .contact-actions { align-items: stretch; flex-direction: column; width: 100%; }
+      .contact-button { justify-content: center; }
+      .footer-inner { flex-direction: column; gap: 8px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Navigasi utama">
+      <a class="brand" href="#beranda" aria-label="Safira — beranda"><span class="brand-mark">SZ.</span><span>SAFIRA LINTANG</span></a>
+      <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="#tentang">Tentang</a>
+        <a href="#pengalaman">Pengalaman</a>
+        <a href="#karya">Karya</a>
+        <a href="#pendidikan">Pendidikan</a>
+      </div>
+      <a class="nav-contact" href="#kontak">Hubungi saya <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero wrap" id="beranda">
+      <div class="hero-shell">
+        <div class="hero-copy">
+          <div class="eyebrow">IT support & web service engineer</div>
+          <h1>Membuat sistem bekerja <span>lebih baik.</span></h1>
+          <p>Saya Safira, praktisi IT yang menghubungkan pengembangan web, infrastruktur, dan dukungan teknis agar teknologi terasa sederhana dan bisa diandalkan.</p>
+          <div class="hero-actions">
+            <a class="button-primary" href="#karya">Jelajahi portofolio <span aria-hidden="true">↘</span></a>
+            <a class="text-link" href="mailto:safiralintang72@gmail.com">Mari terhubung <span aria-hidden="true">↗</span></a>
+          </div>
+          <div class="hero-location">Berbasis di Sidoarjo, Jawa Timur · Indonesia</div>
+        </div>
+        <aside class="system-card" aria-label="Ringkasan kompetensi">
+          <div class="card-top"><span>Professional profile / 01</span><span class="live">Available</span></div>
+          <div class="terminal">
+            <div><span class="dim">$</span> <span class="key">whoami</span></div>
+            <div class="value">Safira Lintang Zhahrani</div>
+            <div><span class="dim">$</span> <span class="key">focus --areas</span></div>
+            <div class="value">web.dev · it.support · infrastructure</div>
+            <div><span class="dim">$</span> <span class="key">status --services</span></div>
+            <div class="value">all systems operational</div>
+          </div>
+          <div class="signal" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="card-foot"><span>Curiosity → capability</span><span>● 100%</span></div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section wrap" id="tentang">
+      <div class="section-head">
+        <div><p class="section-label">01 / Tentang saya</p><h2>Teknologi, dari<br>ujung ke ujung.</h2></div>
+        <p class="section-intro">Dari baris kode hingga server yang berjalan di belakangnya—saya senang memahami bagaimana semuanya saling terhubung.</p>
+      </div>
+      <div class="about-grid">
+        <div class="about-stamp"><span class="stamp-mark">IT<br>≋ web</span><p>Belajar cepat. Bekerja kolaboratif. Selalu mencari cara yang lebih baik.</p></div>
+        <div class="about-copy">
+          <p>Lulusan <strong>SMK Telkom Sidoarjo</strong> dengan pengalaman di pengembangan aplikasi web, administrasi sistem, pengelolaan database, dan dukungan pengguna.</p>
+          <p>Terbiasa mengembangkan aplikasi menggunakan Laravel dan Flask, mengelola layanan server, serta membantu pengguna menyelesaikan kendala teknis. Saya nyaman bekerja mandiri maupun dalam tim, dan antusias mempelajari hal baru.</p>
+          <div class="skill-chips" aria-label="Keahlian utama"><span class="chip">Laravel · PHP</span><span class="chip">Python · Flask</span><span class="chip">PostgreSQL · MySQL</span><span class="chip">Linux · Apache</span><span class="chip">IT Support</span><span class="chip">Networking</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section work-section" id="pengalaman">
+      <div class="wrap">
+        <div class="section-head">
+          <div><p class="section-label">02 / Perjalanan</p><h2>Pengalaman kerja.</h2></div>
+          <p class="section-intro">Merawat sistem yang ada, sekaligus membangun solusi untuk kebutuhan berikutnya.</p>
+        </div>
+        <div class="experience-list">
+          <article class="experience"><div class="experience-date">2026 — Sekarang</div><div class="experience-body"><div class="experience-title"><h3>IT Staff</h3><span>PT Ladang Sehat Indonesia</span></div><p>Mengembangkan dan memelihara aplikasi digitalisasi berbasis Laravel; mengelola database, infrastruktur TI, jaringan, layanan email, inventaris aset, dan dukungan teknis pengguna.</p></div><div class="experience-index">01</div></article>
+          <article class="experience"><div class="experience-date">2025 — 2026</div><div class="experience-body"><div class="experience-title"><h3>Internship IT</h3><span>PT Ladang Sehat Indonesia</span></div><p>Menangani jaringan dan perangkat kerja, administrasi Zimbra dan Roundcube, dukungan teknis harian, serta pengujian aplikasi internal perusahaan.</p></div><div class="experience-index">02</div></article>
+          <article class="experience"><div class="experience-date">2024 — 2025</div><div class="experience-body"><div class="experience-title"><h3>Associate IT Infrastructure & Web Service Development</h3><span>PT Integra Teknologi Solusi</span></div><p>Mengembangkan aplikasi web dan REST API; mengelola WordPress, Apache, SSL/TLS, backup PostgreSQL dengan Barman, serta monitoring layanan menggunakan Uptime Kuma.</p></div><div class="experience-index">03</div></article>
+          <article class="experience"><div class="experience-date">2025 — Sekarang</div><div class="experience-body"><div class="experience-title"><h3>Guru Les Privat</h3><span>Mandiri</span></div><p>Mengajar siswa SD dan SMP dengan metode belajar yang disesuaikan, materi tambahan, dan latihan soal untuk membantu meningkatkan pemahaman serta kepercayaan diri.</p></div><div class="experience-index">04</div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section wrap" id="karya">
+      <div class="section-head">
+        <div><p class="section-label">03 / Fokus pekerjaan</p><h2>Solusi yang saya bangun.</h2></div>
+        <p class="section-intro">Beberapa area kerja yang menunjukkan cara saya menggabungkan software, data, dan infrastruktur.</p>
+      </div>
+      <div class="projects-grid">
+        <article class="project"><div class="project-top"><span>01 — Application</span><span class="project-icon" aria-hidden="true">↗</span></div><div><h3>Digitalisasi proses bisnis</h3><p>Aplikasi internal berbasis Laravel untuk membantu alur administrasi lebih efisien, akurat, dan mudah dikelola.</p><div class="project-tags"><span>Laravel</span><span>· PHP</span><span>· Database</span></div></div></article>
+        <article class="project"><div class="project-top"><span>02 — Web services</span><span class="project-icon" aria-hidden="true">⌘</span></div><div><h3>Web service & REST API</h3><p>Pengembangan aplikasi web dan API terintegrasi database untuk mendukung kebutuhan operasional serta otomatisasi data.</p><div class="project-tags"><span>Python</span><span>· Flask</span><span>· PostgreSQL</span></div></div></article>
+        <article class="project"><div class="project-top"><span>03 — Infrastructure</span><span class="project-icon" aria-hidden="true">⌁</span></div><div><h3>Infrastruktur yang andal</h3><p>Pengelolaan server web, sistem backup, monitoring layanan, dan konfigurasi keamanan untuk menjaga layanan tetap tersedia.</p><div class="project-tags"><span>Linux</span><span>· Apache</span><span>· Uptime Kuma</span></div></div></article>
+      </div>
+    </section>
+
+    <section class="section wrap" id="pendidikan">
+      <div class="bottom-grid">
+        <div><p class="section-label">04 / Pendidikan</p><h2>Terus bertumbuh.</h2>
+          <div class="education-card"><div class="education-year">2026 — kini</div><div><h3>Universitas Terbuka</h3><p>Sistem Informasi</p></div></div>
+          <div class="education-card"><div class="education-year">2022 — 2025</div><div><h3>SMK Telkom Sidoarjo</h3><p>Teknik Jaringan Akses Telekomunikasi · Nilai akhir 88,13 / 100</p></div></div>
+        </div>
+        <div><p class="section-label">05 / Pencapaian</p><h2>Hal yang saya banggakan.</h2>
+          <div class="award-list"><div class="award"><span>English Speech Competition · Juara 1</span><span>2023</span></div><div class="award"><span>UI/UX Design Competition · Finalis</span><span>2023</span></div><div class="award"><span>Poster Design Competition · Juara 2</span><span>2024</span></div><div class="award"><span>TOEIC Certified · Skor 327</span><span>Bahasa</span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact wrap" id="kontak">
+      <div class="contact-shell"><div><p class="section-label">06 / Kontak</p><h2>Mari terhubung!</h2><p>Terbuka untuk berdiskusi tentang teknologi, web, dan peluang kolaborasi.</p></div><div class="contact-actions"><a class="contact-button" href="mailto:safiralintang72@gmail.com">Kirim email <span aria-hidden="true">↗</span></a><a class="contact-button" href="https://bit.ly/Safiralintanglinkedin" target="_blank" rel="noreferrer">LinkedIn <span aria-hidden="true">↗</span></a></div></div>
+    </section>
+  </main>
+
+  <footer class="wrap"><div class="footer-inner"><span>© <span id="year">2026</span> Safira Lintang Zhahrani</span><span>Dibuat dengan rasa ingin tahu · Sidoarjo, Indonesia</span></div></footer>
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navLinks = document.querySelector('.nav-links');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.setAttribute('aria-label', isOpen ? 'Tutup menu' : 'Buka menu');
+    });
+    navLinks.addEventListener('click', (event) => {
+      if (event.target.closest('a')) {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', 'Buka menu');
+      }
+    });
+    document.querySelector('#year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
