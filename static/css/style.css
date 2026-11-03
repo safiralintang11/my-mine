@@ -254,3 +254,35 @@ footer { padding: 0 0 25px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; }
 }
+
+/* Pink Cat Chasing Butterfly */
+.cat-animation {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.cat-animation img {
+    position: absolute;
+    width: 110px;
+    height: 90px;
+    object-fit: contain;
+    left: 0;
+    top: 0;
+
+    animation: catChase 5s ease-in-out infinite alternate;
+}
+
+@keyframes catChase {
+    0% {
+        left: 0;
+        transform: translateX(0);
+    }
+
+    100% {
+        left: calc(100% - 110px);
+        transform: translateX(0);
+    }
+}
