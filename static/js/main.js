@@ -163,7 +163,7 @@ if (window.Swiper) {
       breakpoints: {
         640: { slidesPerView: 1.55, spaceBetween: 20 },
         960: { slidesPerView: 2.15, spaceBetween: 22 },
-        1180: { slidesPerView: 2.4, spaceBetween: 22 },
+        1180: { slidesPerView: 2, spaceBetween: 22 },
       },
     });
   });

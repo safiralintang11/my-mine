@@ -35,6 +35,9 @@ projects if they are missing.
 
 - A `Project` with a non-empty `url` is shown in the “Portofolio pilihan”
   carousel; projects without a URL are shown in the focus grid.
+- `Project.theme` controls the cover treatment: `ink` (dark, logo directly on
+  the cover), `leaf` / `earth` (light, logo inside a white plate), or
+  `blush` (default).
 - Certificate/documentation rows use `image` paths relative to `/static`
   (e.g. `images/sertifikat/foo.jpg`); the archive gallery opens them in a
   `<dialog>` lightbox.

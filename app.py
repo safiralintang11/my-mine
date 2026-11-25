@@ -33,6 +33,7 @@ def _ensure_project_columns():
     _ensure_columns("project", [
         ("url", "VARCHAR(240) NOT NULL DEFAULT ''"),
         ("image", "VARCHAR(240) NOT NULL DEFAULT ''"),
+        ("theme", "VARCHAR(20) NOT NULL DEFAULT 'blush'"),
         ("year", "VARCHAR(20) NOT NULL DEFAULT ''"),
     ])
 

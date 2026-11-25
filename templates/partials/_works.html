@@ -2,9 +2,9 @@
   <div class="swiper-wrapper">
     {% for project in featured %}
     <article class="swiper-slide work-card" style="--i: {{ loop.index }}">
-      <a class="work-cover{% if not project.image %} work-cover--art{% endif %}" href="{{ project.url }}" target="_blank" rel="noreferrer" aria-label="Buka {{ project.title }}"{% if not project.image %} data-mark="{{ project.icon }}"{% endif %}>
+      <a class="work-cover{% if not project.image %} work-cover--art{% endif %}{% if project.theme %} work-cover--{{ project.theme }}{% endif %}" href="{{ project.url }}" target="_blank" rel="noreferrer" aria-label="Buka {{ project.title }}"{% if not project.image %} data-mark="{{ project.icon }}"{% endif %}>
         {% if project.image %}
-        <img src="{{ url_for('static', filename=project.image) }}" alt="" loading="lazy" aria-hidden="true">
+        <span class="work-logo"><img src="{{ url_for('static', filename=project.image) }}" alt="" aria-hidden="true"></span>
         {% endif %}
         <span class="work-cover-veil" aria-hidden="true"></span>
         <span class="work-cover-meta"><span class="work-dot" aria-hidden="true"></span>Live</span>
