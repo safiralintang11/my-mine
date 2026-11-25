@@ -11,6 +11,55 @@ INSTAGRAM = "https://www.instagram.com/its.lintang?stkn=MTYwbWUwN214OTB6bw=="
 WHATSAPP = "https://wa.me/qr/3TVQE4A77IMBF1"
 FIGMA = "https://www.figma.com/design/KzcZjz0x5f05nbhGgLtnip/My-Porto?node-id=2303-302&t=xsZGPVf3R804tzNV-1"
 
+# Proyek yang benar-benar tayang (muncul di carousel "Portofolio pilihan").
+FEATURED_PROJECTS = [
+    {
+        "id": 4,
+        "label": "01 — Live product",
+        "icon": "↗",
+        "title": "Byra Books",
+        "description": "Toko buku baru & impor dengan katalog, ready stock, pre-order, kalkulator fee impor, wishlist, keranjang, dan pelacakan pesanan. Dibangun dengan Next.js dan tayang di Vercel.",
+        "tags": "Next.js,Vercel,E-commerce",
+        "url": "https://byra-books.vercel.app",
+        "image": "images/bunga.jpg",
+        "year": "2026",
+        "sort": 4,
+    },
+    {
+        "id": 5,
+        "label": "02 — Dashboard",
+        "icon": "◈",
+        "title": "StockECM",
+        "description": "Aplikasi dashboard untuk memantau stok dan data operasional dalam satu tampilan ringkas, membantu tim melihat kondisi gudang dan alur kerja harian.",
+        "tags": "Dashboard,Database,Web App",
+        "url": "https://stockecm.ladanglima.com",
+        "image": "images/pita.jpg",
+        "year": "2025",
+        "sort": 5,
+    },
+    {
+        "id": 6,
+        "label": "03 — Internal system",
+        "icon": "⌁",
+        "title": "Mini ERP Manufacturing",
+        "description": "Sistem internal untuk menyatukan alur produksi, stok bahan, dan administrasi pabrik di PT Ladang Sehat Indonesia.",
+        "tags": "Laravel,ERP,Internal Tools",
+        "url": "https://ladangsehat.id",
+        "image": "",
+        "year": "2026",
+        "sort": 6,
+    },
+]
+
+
+def seed_featured_projects():
+    """Tambahkan proyek unggulan bila belum ada (aman untuk database lama)."""
+    if Project.query.filter(Project.url != "").count():
+        return
+    for item in FEATURED_PROJECTS:
+        db.session.merge(Project(**item))
+    db.session.commit()
+
 
 def run_seed():
     db.session.merge(Profile(

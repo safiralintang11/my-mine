@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="id" class="no-js">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#FFF6F1">
+  <meta name="description" content="{% block description %}Safira Lintang Zhahrani — IT Systems Administrator & Junior Database Administrator dari Sidoarjo yang bikin sistem rapi, data aman, dan kolaborasi menyenangkan.{% endblock %}">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% block og_title %}Safira Lintang Zhahrani — IT Systems Administrator{% endblock %}">
+  <meta property="og:description" content="{% block og_description %}Portofolio Safira Lintang: sistem, data, dan produk web yang rapi, andal, dan enak dipakai.{% endblock %}">
+  <meta property="og:image" content="{{ url_for('static', filename='images/bunga.jpg', _external=True) }}">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% block twitter_title %}Safira Lintang Zhahrani — IT Systems Administrator{% endblock %}">
+  <meta name="twitter:image" content="{{ url_for('static', filename='images/bunga.jpg', _external=True) }}">
+  <title>{% block title %}Safira Lintang Zhahrani — IT Systems Administrator{% endblock %}</title>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.svg') }}" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script>
+    document.documentElement.classList.replace('no-js', 'js');
+    try {
+      if (sessionStorage.getItem('slz-transition') === '1') {
+        document.documentElement.classList.add('is-transitioning');
+        sessionStorage.removeItem('slz-transition');
+      }
+    } catch (e) {}
+    setTimeout(function () {
+      document.documentElement.classList.remove('is-transitioning');
+    }, 1600);
+    setTimeout(function () {
+      if (!window.__slzReady) {
+        document.querySelectorAll('.reveal, .reveal-scale').forEach(function (el) {
+          el.classList.add('is-visible');
+        });
+      }
+    }, 2500);
+  </script>
+</head>
+<body class="{% block body_class %}{% endblock %}">
+  <a class="skip-link" href="#main">Langsung ke konten</a>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" aria-hidden="true"></div>
+  <div class="cursor-glow" aria-hidden="true"></div>
+  <div class="page-transition" aria-hidden="true"><span class="page-transition-mark">SLZ.</span></div>
+
+  <header class="topbar">
+    <nav class="nav wrap" aria-label="Navigasi utama">
+      <a class="brand" href="{{ url_for('index') }}#beranda" aria-label="Safira — beranda">
+        <span class="brand-mark">SLZ.</span>
+        <span class="brand-text">{{ profile.brand }}<small>Systems · Data · Web</small></span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
+      <div class="nav-links" id="nav-links">
+        <a href="{{ url_for('index') }}#tentang">Kenalan</a>
+        <a href="{{ url_for('index') }}#pilihan">Portofolio pilihan</a>
+        <a href="{{ url_for('index') }}#pengalaman">Jejak kerja</a>
+        <a href="{{ url_for('index') }}#karya">Karya</a>
+        <a href="{{ url_for('portofolio') }}"{% if request.endpoint == 'portofolio' %} class="is-active" aria-current="page"{% endif %}>Arsip</a>
+      </div>
+      <a class="nav-contact" href="{{ url_for('index') }}#kontak">Sapa aku <span aria-hidden="true">↗</span></a>
+    </nav>
+  </header>
+
+  <main id="main">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="footer wrap">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <span class="brand-mark">SLZ.</span>
+        <div>
+          <strong>{{ profile.name }}</strong>
+          <p>{{ profile.role }}</p>
+        </div>
+      </div>
+      <div class="footer-links">
+        <a href="{{ url_for('index') }}#tentang">Kenalan</a>
+        <a href="{{ url_for('index') }}#pilihan">Portofolio pilihan</a>
+        <a href="{{ url_for('portofolio') }}">Arsip</a>
+        <a href="mailto:{{ profile.email }}">Email</a>
+      </div>
+      <div class="footer-social">
+        {% if profile.linkedin %}<a href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">LinkedIn</a>{% endif %}
+        {% if profile.instagram %}<a href="{{ profile.instagram }}" target="_blank" rel="noreferrer">Instagram</a>{% endif %}
+        {% if profile.whatsapp %}<a href="{{ profile.whatsapp }}" target="_blank" rel="noreferrer">WhatsApp</a>{% endif %}
+        {% if profile.figma %}<a href="{{ profile.figma }}" target="_blank" rel="noreferrer">Figma</a>{% endif %}
+      </div>
+    </div>
+    <div class="footer-base">
+      <span>© <span id="year">2026</span> {{ profile.name }}</span>
+      <span>Dibuat sepenuh hati &amp; secangkir kopi · Sidoarjo, Indonesia</span>
+    </div>
+  </footer>
+
+  <button class="back-top" type="button" aria-label="Kembali ke atas">↑</button>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/motion@10.18.0/dist/motion.min.js" defer></script>
+  <script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

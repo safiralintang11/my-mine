@@ -1,56 +1,44 @@
-<!doctype html>
-<html lang="id">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#FFF1E9">
-  <meta name="description" content="Safira Lintang Zhahrani — IT Systems Administrator & Junior Database Administrator dari Sidoarjo yang bikin sistem rapi, data aman, dan kolaborasi menyenangkan ✨">
-  <title>Safira Lintang Zhahrani — IT Systems Administrator & Junior Database Administrator</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-</head>
-<body>
-  <div class="scroll-progress" aria-hidden="true"></div>
-  <div class="cursor-glow" aria-hidden="true"></div>
-  <header class="topbar">
-    <nav class="nav wrap" aria-label="Navigasi utama">
-      <a class="brand" href="#beranda" aria-label="Safira — beranda"><span class="brand-mark">SLZ.</span><span>{{ profile.brand }}</span></a>
-      <button class="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false">☰</button>
-      <div class="nav-links" id="nav-links">
-        <a href="#tentang">Kenalan</a>
-        <a href="#pengalaman">Jejak Kerja</a>
-        <a href="#karya">Karya</a>
-        <a href="#pendidikan">Belajar</a>
-        <a href="/portofolio">Portofolio</a>
-      </div>
-      <a class="nav-contact" href="#kontak">Sapa aku <span aria-hidden="true"></span></a>
-    </nav>
-  </header>
+{% extends "base.html" %}
 
-  <main>
+{% block title %}{{ profile.name }} — {{ profile.role }}{% endblock %}
+{% block description %}{{ profile.intro }}{% endblock %}
+
+{% block content %}
     <section class="hero hero-feature" id="beranda">
       <div class="hero-media" aria-hidden="true">
-        <video autoplay muted loop playsinline preload="auto">
-          <source src="{{ url_for('static', filename='video/33406-397122097.mp4') }}" type="video/mp4">
+        <video autoplay muted loop playsinline preload="metadata">
+          <source src="{{ url_for('static', filename='video/hero-lake.mp4') }}" type="video/mp4">
         </video>
         <div class="hero-veil"></div>
         <div class="hero-mesh"></div>
       </div>
+      <div class="hero-float hero-float--flower" aria-hidden="true">
+        <img src="{{ url_for('static', filename='images/bunga.jpg') }}" alt="">
+      </div>
+      <div class="hero-float hero-float--bow" aria-hidden="true">
+        <img src="{{ url_for('static', filename='images/pita.jpg') }}" alt="">
+      </div>
       <div class="wrap hero-shell">
         <div class="hero-copy">
-          <p class="hero-id reveal" style="--i: 1">{{ profile.name }}</p>
-          <div class="eyebrow reveal" style="--i: 2">{{ profile.tagline }}</div>
-          <h1 class="reveal" style="--i: 3">
+          <p class="hero-id" data-hero>{{ profile.name }}</p>
+          <div class="eyebrow" data-hero>{{ profile.tagline }}</div>
+          <h1 data-hero>
             {{ profile.headline }}<br>
             <span>{{ profile.headline_accent }}</span>
           </h1>
-          <p class="reveal" style="--i: 4">{{ profile.intro }}</p>
-          <div class="hero-actions reveal" style="--i: 5">
-            <a class="button-primary" href="#karya">Intip karya-karyaku ✨ <span aria-hidden="true"></span></a>
-            <a class="text-link" href="mailto:{{ profile.email }}">Yuk, kenalan dulu<span aria-hidden="true"></span></a>
+          <p data-hero>{{ profile.intro }}</p>
+          <div class="hero-actions" data-hero>
+            <a class="button-primary magnetic" href="#pilihan">Intip karya-karyaku <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="mailto:{{ profile.email }}">Yuk, kenalan dulu<span aria-hidden="true">→</span></a>
           </div>
-          <div class="hero-location reveal" style="--i: 6">{{ profile.location }}</div>
+          <div class="hero-location" data-hero>{{ profile.location }}</div>
+          <dl class="hero-stats" data-hero>
+            <div><dt>Tahun pengalaman</dt><dd><span class="counter" data-count="3">3</span>+</dd></div>
+            <div><dt>Proyek &amp; sistem</dt><dd><span class="counter" data-count="{{ projects|length }}">{{ projects|length }}</span></dd></div>
+            <div><dt>Penghargaan</dt><dd><span class="counter" data-count="{{ awards|length }}">{{ awards|length }}</span></dd></div>
+          </dl>
         </div>
-        <aside class="system-card reveal-scale" aria-label="Ringkasan kompetensi">
+        <aside class="system-card" aria-label="Ringkasan kompetensi" data-hero-card>
           <div class="card-top"><span>Professional profile / 01</span><span class="live">Open for collab</span></div>
           <div class="terminal">
             {% for line in profile.card_lines.split('\n') %}
@@ -59,15 +47,11 @@
             <div class="value">{{ value }}</div>
             {% endfor %}
           </div>
-          <div class="cat-animation">
-            <img
-                src="{{ url_for('static', filename='images/kawaii_cat.gif') }}"
-                alt="Pink pixel cat chasing a butterfly"
-            >
-          </div>
+          <div class="signal" aria-hidden="true">{% for i in range(18) %}<i></i>{% endfor %}</div>
           <div class="card-foot"><span>Rasa penasaran → kemampuan</span><span>● 100%</span></div>
         </aside>
       </div>
+      <a class="scroll-cue" href="#tentang">Scroll</a>
     </section>
 
     <div class="ticker" aria-hidden="true">
@@ -79,25 +63,49 @@
 
     <section class="section wrap" id="tentang">
       <div class="section-head">
-        <div class="reveal"><p class="section-label">01 / Kenalan dulu</p><h2>Dari kode manis<br>sampai server anteng.</h2></div>
+        <div class="reveal"><p class="section-label">01 / Kenalan dulu</p><h2>Dari kode manis<br>sampai server <span>anteng.</span></h2></div>
         <p class="section-intro reveal">Dari baris kode sampai server yang bekerja diam-diam di belakang layar, aku suka memastikan semuanya akur, rapi, dan selalu on time.</p>
       </div>
       <div class="about-grid">
-        <div class="about-stamp reveal-scale"><span class="stamp-mark">{{ profile.stamp_mark|safe }}</span><p>{{ profile.stamp_text }}</p></div>
+        <div class="about-visual reveal-scale">
+          <div class="about-stamp">
+            <span class="stamp-mark">{{ profile.stamp_mark|safe }}</span>
+            <p>{{ profile.stamp_text }}</p>
+          </div>
+          <img class="about-bow" src="{{ url_for('static', filename='images/pita.jpg') }}" alt="" aria-hidden="true">
+        </div>
         <div class="about-copy">
           <p class="reveal">{{ profile.about_1|safe }}</p>
           <p class="reveal">{{ profile.about_2 }}</p>
           <div class="skill-chips reveal" aria-label="Keahlian andalan">
             {% for skill in skills %}<span class="chip" style="--i: {{ loop.index }}">{{ skill.name }}</span>{% endfor %}
           </div>
+          <div class="about-notes reveal">
+            <div><span>Fokus</span><p>Web app, database, infrastructure</p></div>
+            <div><span>Cara kerja</span><p>Rapi, komunikatif, tepat waktu</p></div>
+          </div>
         </div>
+      </div>
+    </section>
+
+    <section class="section featured-section" id="pilihan">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="reveal"><p class="section-label">02 / Portofolio pilihan</p><h2>Yang sudah tayang,<br>bukan cuma <span>konsep.</span></h2></div>
+          <div class="section-aside reveal">
+            <p class="section-intro">Tiga produk yang sudah tayang: toko buku online, dashboard stok, dan sistem ERP internal.</p>
+            <a class="inline-link" href="{{ url_for('portofolio') }}">Lihat arsip lengkap <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+        {% include "partials/_works.html" %}
+        <p class="works-note reveal">Geser untuk menjelajah · klik kartu untuk membuka situs live</p>
       </div>
     </section>
 
     <section class="section work-section" id="pengalaman">
       <div class="wrap">
         <div class="section-head">
-          <div class="reveal"><p class="section-label">02 / Perjalanan</p><h2>Jejak kerja yang rapi.</h2></div>
+          <div class="reveal"><p class="section-label">03 / Perjalanan</p><h2>Jejak kerja yang <span>rapi.</span></h2></div>
           <p class="section-intro reveal">Merawat sistem yang sudah ada dengan telaten, sambil menyiapkan solusi cantik untuk kebutuhan berikutnya.</p>
         </div>
         <div class="experience-list">
@@ -117,11 +125,11 @@
 
     <section class="section wrap" id="karya">
       <div class="section-head">
-        <div class="reveal"><p class="section-label">03 / Fokus pekerjaan</p><h2>Solusi racikan aku.</h2></div>
+        <div class="reveal"><p class="section-label">04 / Fokus pekerjaan</p><h2>Solusi racikan <span>aku.</span></h2></div>
         <p class="section-intro reveal">Beberapa area favorit tempat software, data, dan infrastruktur aku racik jadi satu paket yang rapi, andal, dan enak dipakai.</p>
       </div>
       <div class="projects-grid">
-        {% for project in projects %}
+        {% for project in focus %}
         <article class="project reveal" style="--i: {{ loop.index }}">
           <div class="project-top"><span>{{ project.label }}</span><span class="project-icon" aria-hidden="true">{{ project.icon }}</span></div>
           <div>
@@ -134,10 +142,32 @@
       </div>
     </section>
 
+    <section class="playground-section" id="playground">
+      <div class="wrap">
+        <div class="playground-card reveal-scale">
+          <div class="playground-copy">
+            <p class="section-label">05 / Playground</p>
+            <h2>Satu bunga,<br><span>tiga dimensi.</span></h2>
+            <p>Interaksi kecil yang bikin halaman terasa hidup. Bunga di samping digambar langsung oleh WebGL — bukan gambar, bukan video. Coba putar, ya.</p>
+            <ul class="playground-hints">
+              <li><span aria-hidden="true">↻</span> Drag untuk memutar</li>
+              <li><span aria-hidden="true">✦</span> Gerakkan kursor</li>
+            </ul>
+          </div>
+          <div class="flower-stage">
+            <canvas id="flower-canvas" aria-label="Bunga 3D interaktif"></canvas>
+            <img class="flower-fallback" src="{{ url_for('static', filename='images/bunga.jpg') }}" alt="Bunga 3D berwarna pink" loading="lazy">
+            <span class="flower-badge">Three.js · WebGL</span>
+            <img class="flower-mascot" src="{{ url_for('static', filename='images/kawaii_cat.gif') }}" alt="" loading="lazy" aria-hidden="true">
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section class="section wrap" id="pendidikan">
       <div class="bottom-grid">
         <div>
-          <p class="section-label reveal">04 / Pendidikan</p><h2 class="reveal">Terus belajar, terus glow up.</h2>
+          <p class="section-label reveal">06 / Pendidikan</p><h2 class="reveal">Terus belajar,<br>terus <span>glow up.</span></h2>
           {% for edu in education %}
           <div class="education-card reveal">
             <div class="education-year">{{ edu.period }}</div>
@@ -146,7 +176,7 @@
           {% endfor %}
         </div>
         <div>
-          <p class="section-label reveal">05 / Pencapaian</p><h2 class="reveal">My little achievements</h2>
+          <p class="section-label reveal">07 / Pencapaian</p><h2 class="reveal">My little <span>achievements</span></h2>
           <div class="award-list">
             {% for award in awards %}
             <div class="award reveal"><span>{{ award.name }}</span><span>{{ award.year }}</span></div>
@@ -158,18 +188,26 @@
 
     <section class="contact wrap" id="kontak">
       <div class="contact-shell reveal-scale">
-        <div><p class="section-label">06 / Kontak</p><h2>Yuk, ngobrol!</h2><p>Lagi cari teman diskusi soal teknologi, web, atau peluang kolaborasi? Aku siap dengerin. Kirim aja pesannya, ya!</p></div>
+        <div class="contact-glow" aria-hidden="true"></div>
+        <div class="contact-copy">
+          <p class="section-label">08 / Kontak</p>
+          <h2>Punya sistem yang<br><span>perlu dirapikan?</span></h2>
+          <p>Lagi cari teman diskusi soal teknologi, web, atau peluang kolaborasi? Aku siap dengerin. Kirim aja pesannya, ya!</p>
+          <a class="contact-email" href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+        </div>
         <div class="contact-actions">
-          <a class="contact-button" href="mailto:{{ profile.email }}">Kirim email <span aria-hidden="true"></span></a>
-          <a class="contact-button" href="{{ profile.whatsapp }}" target="_blank" rel="noreferrer">Chat WhatsApp <span aria-hidden="true"></span></a>
-          <a class="contact-button" href="{{ profile.instagram }}" target="_blank" rel="noreferrer">Intip Instagram <span aria-hidden="true"></span></a>
-          <a class="contact-button" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">Sapa di LinkedIn <span aria-hidden="true"></span></a>
+          <a class="contact-button magnetic" href="mailto:{{ profile.email }}">Kirim email <span aria-hidden="true">↗</span></a>
+          <a class="contact-button" href="{{ profile.whatsapp }}" target="_blank" rel="noreferrer">Chat WhatsApp <span aria-hidden="true">↗</span></a>
+          <a class="contact-button" href="{{ profile.instagram }}" target="_blank" rel="noreferrer">Intip Instagram <span aria-hidden="true">↗</span></a>
+          <a class="contact-button" href="{{ profile.linkedin }}" target="_blank" rel="noreferrer">Sapa di LinkedIn <span aria-hidden="true">↗</span></a>
         </div>
       </div>
     </section>
-  </main>
+{% endblock %}
 
-  <footer class="wrap"><div class="footer-inner"><span>© <span id="year">2026</span> {{ profile.name }}</span><span>Dibuat sepenuh hati & secangkir kopi ☕ · Sidoarjo, Indonesia</span></div></footer>
-  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
-</body>
-</html>
+{% block scripts %}
+  <script type="importmap">
+    { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="{{ url_for('static', filename='js/flower3d.js') }}"></script>
+{% endblock %}

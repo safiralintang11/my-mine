@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+from sqlalchemy import inspect, text
 from config import Config
 from extensions import db
 
@@ -9,14 +10,31 @@ db.init_app(app)
 from models import Profile, Experience, Project, Education, Award, Skill, Certificate, Documentation
 
 
+def _ensure_columns(table, columns):
+    # db.create_all() tidak menambah kolom pada tabel lama, jadi lengkapi manual.
+    inspector = inspect(db.engine)
+    if table not in inspector.get_table_names():
+        return
+    existing = {column["name"] for column in inspector.get_columns(table)}
+    with db.engine.begin() as conn:
+        for name, ddl in columns:
+            if name not in existing:
+                conn.execute(text(f"ALTER TABLE {table} ADD COLUMN {name} {ddl}"))
+
+
 def _ensure_profile_columns():
-    # SQLite tidak mendukung migrasi otomatis: tambahkan kolom baru bila belum ada.
-    with db.engine.connect() as conn:
-        cols = {row[1] for row in conn.execute(db.text("PRAGMA table_info(profile)"))}
-        for name in ("instagram", "whatsapp", "figma", "github"):
-            if name not in cols:
-                conn.execute(db.text(f"ALTER TABLE profile ADD COLUMN {name} VARCHAR(240) NOT NULL DEFAULT ''"))
-        conn.commit()
+    _ensure_columns("profile", [
+        (name, "VARCHAR(240) NOT NULL DEFAULT ''")
+        for name in ("instagram", "whatsapp", "figma", "github")
+    ])
+
+
+def _ensure_project_columns():
+    _ensure_columns("project", [
+        ("url", "VARCHAR(240) NOT NULL DEFAULT ''"),
+        ("image", "VARCHAR(240) NOT NULL DEFAULT ''"),
+        ("year", "VARCHAR(20) NOT NULL DEFAULT ''"),
+    ])
 
 
 def _backfill_profile_links():
@@ -33,9 +51,12 @@ def init_db():
     with app.app_context():
         db.create_all()
         _ensure_profile_columns()
+        _ensure_project_columns()
         if not Profile.query.first():
             from seed import run_seed
             run_seed()
+        from seed import seed_featured_projects
+        seed_featured_projects()
         _backfill_profile_links()
 
 
@@ -50,6 +71,8 @@ def index():
     education = Education.query.order_by(Education.sort).all()
     awards = Award.query.order_by(Award.sort).all()
     skills = Skill.query.order_by(Skill.sort).all()
+    featured = [p for p in projects if p.url]
+    focus = [p for p in projects if not p.url]
     return render_template("index.html", **locals())
 
 
@@ -59,6 +82,8 @@ def portofolio():
     projects = Project.query.order_by(Project.sort).all()
     certificates = Certificate.query.order_by(Certificate.sort).all()
     documentations = Documentation.query.order_by(Documentation.sort).all()
+    featured = [p for p in projects if p.url]
+    focus = [p for p in projects if not p.url]
     return render_template("portfolio.html", **locals())
 
 

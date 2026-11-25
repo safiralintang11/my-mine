@@ -1,0 +1,33 @@
+<div class="swiper works-swiper">
+  <div class="swiper-wrapper">
+    {% for project in featured %}
+    <article class="swiper-slide work-card" style="--i: {{ loop.index }}">
+      <a class="work-cover{% if not project.image %} work-cover--art{% endif %}" href="{{ project.url }}" target="_blank" rel="noreferrer" aria-label="Buka {{ project.title }}"{% if not project.image %} data-mark="{{ project.icon }}"{% endif %}>
+        {% if project.image %}
+        <img src="{{ url_for('static', filename=project.image) }}" alt="" loading="lazy" aria-hidden="true">
+        {% endif %}
+        <span class="work-cover-veil" aria-hidden="true"></span>
+        <span class="work-cover-meta"><span class="work-dot" aria-hidden="true"></span>Live</span>
+        <span class="work-cover-word">{{ project.title }}</span>
+        <span class="work-open">Kunjungi <span aria-hidden="true">↗</span></span>
+      </a>
+      <div class="work-body">
+        <div class="work-top"><span>{{ project.label }}</span>{% if project.year %}<span>{{ project.year }}</span>{% endif %}</div>
+        <h3>{{ project.title }}</h3>
+        <p>{{ project.description }}</p>
+        <div class="work-tags">
+          {% for tag in project.tags.split(',') %}<span>{{ tag }}</span>{% endfor %}
+        </div>
+        <a class="work-link" href="{{ project.url }}" target="_blank" rel="noreferrer">Lihat langsung <span aria-hidden="true">→</span></a>
+      </div>
+    </article>
+    {% endfor %}
+  </div>
+  <div class="works-controls">
+    <div class="swiper-pagination" aria-label="Navigasi proyek"></div>
+    <div class="works-arrows">
+      <button class="swiper-prev" type="button" aria-label="Proyek sebelumnya">←</button>
+      <button class="swiper-next" type="button" aria-label="Proyek berikutnya">→</button>
+    </div>
+  </div>
+</div>

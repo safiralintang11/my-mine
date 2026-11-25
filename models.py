@@ -40,6 +40,9 @@ class Project(db.Model):
     title = db.Column(db.String(160), nullable=False)
     description = db.Column(db.Text, nullable=False)
     tags = db.Column(db.String(200), nullable=False)  # dipisah koma
+    url = db.Column(db.String(240), nullable=False, default="")  # kosong = kartu fokus
+    image = db.Column(db.String(240), nullable=False, default="")  # path di /static
+    year = db.Column(db.String(20), nullable=False, default="")
     sort = db.Column(db.Integer, default=0)
 
 
